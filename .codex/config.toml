@@ -1,0 +1,11 @@
+[mcp_servers.vibium]
+command = "cmd"
+args = [
+    "/c",
+    "npx",
+    "-y",
+    "vibium@26.8.21",
+    "mcp",
+    "--screenshot-dir",
+    "./artifacts/mcp",
+]

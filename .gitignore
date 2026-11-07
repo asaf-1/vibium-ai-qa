@@ -1,0 +1,16 @@
+node_modules/
+reports/
+artifacts/
+.env
+
+# Personal skills and session notes (copied from Agents-Playground)
+.claude/skills/docs/
+.claude/skills/recall/
+.claude/skills/push/
+.agents/skills/docs/
+.agents/skills/recall/
+.claude/settings.local.json
+obsidian-vault/STATUS.md
+obsidian-vault/Snapshots/*
+obsidian-vault/Plans/
+obsidian-vault/.obsidian/workspace.json
