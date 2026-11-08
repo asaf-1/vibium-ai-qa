@@ -9,6 +9,10 @@
     "node": ">=22"
   },
   "scripts": {
+    "test": "tsx --test --test-concurrency=1 \"tests/**/*.spec.ts\"",
+    "smoke": "tsx --test tests/e2e/sanity/smoke.spec.ts",
+    "flow": "tsx --test tests/e2e/bank/transfer-own-accounts.spec.ts",
+    "reliability": "tsx scripts/reliability.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
