@@ -118,10 +118,18 @@ export async function bankFetch(
   }
 }
 
-// How a test ended: passed or not, and on a failure what it was blamed on.
+// How a test ended: passed or not, on a failure what it was blamed on, and
+// the facts it recorded (for run.json and summaries).
 export interface Outcome {
   passed: boolean;
   cause?: FailureCause;
+  facts: Record<string, string>;
+}
+
+// Adds a line to the calls list from outside Vibium, such as a tool call an
+// AI agent made. The caller must already have removed anything secret.
+export function note(line: string): void {
+  record(line);
 }
 
 // Runs one test: starts its record, runs it, prints the block, and appends the
@@ -160,7 +168,11 @@ export async function runTest(
   console.log(block);
   await mkdir(options.runDir, { recursive: true });
   await appendFile(join(options.runDir, "result.txt"), `${block}\n`);
-  return { passed: status === "PASSED", cause };
+  return {
+    passed: status === "PASSED",
+    cause,
+    facts: Object.fromEntries(run.facts),
+  };
 }
 
 // The block itself, row by row.

@@ -44,3 +44,17 @@ AI-driven QA. The test ground is Playground Bank, from the public
     instead.
   - A failure blamed on `vibium` is checked by hand before it counts against
     Vibium.
+- **2026-11-08: the agent tests (phase 2).**
+  - **What runs:** `npm run agent` runs `tests/agent/bank-tasks.spec.ts`.
+    Each test gives one plain bank task to a fresh headless Claude Code,
+    started in an empty temp folder with only Vibium's MCP tools
+    (`framework/agent/claudeAgent.ts`).
+  - **How the result is checked:** through the bank's API
+    (`framework/helpers/bankApi.ts`, `framework/fixtures/agentTest.ts`),
+    never through the agent's own answer.
+  - **Not part of `npm test`:** it takes about 12 minutes and uses the
+    Claude plan.
+  - **The block:** every agent tool call is listed, with typed text and the
+    password hidden.
+  - **Result:** 8 of 9 fair attempts passed. Every DONE the agent claimed
+    was confirmed by the API.
