@@ -77,6 +77,7 @@ export function test(
       test: name,
       spec,
       ...(outcome.cause ? { cause: outcome.cause } : {}),
+      facts: outcome.facts,
     });
     if (!outcome.passed) {
       throw new Error(
